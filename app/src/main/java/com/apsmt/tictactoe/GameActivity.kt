@@ -50,7 +50,7 @@ class GameActivity : AppCompatActivity(), View.OnClickListener{
 
     private fun startGame() {
         gameModel?.apply{
-            updateGameData(
+            GameData.saveGameModel(
                 GameModel(
                     status = Status.INPROGRESS
                 )
@@ -85,14 +85,9 @@ class GameActivity : AppCompatActivity(), View.OnClickListener{
             if(fillPos.none{it.isEmpty()}){
                 status = Status.FINISHED
             }
-            updateGameData(this)
+            GameData.saveGameModel(this)
         }
     }
-
-    private fun updateGameData(model: GameModel){
-        GameData.saveGameModel(model)
-    }
-
 
     private fun setUI(){
         gameModel?.apply{
@@ -141,7 +136,7 @@ class GameActivity : AppCompatActivity(), View.OnClickListener{
                 fillPos[clickPosition] = currentPlayer
                 currentPlayer = if(currentPlayer == "X")"O" else "X"
                 checkWinner()
-                updateGameData(this)
+                GameData.saveGameModel(this)
             }
         }
     }

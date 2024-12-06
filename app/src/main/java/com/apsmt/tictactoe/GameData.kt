@@ -4,10 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
 object GameData {
-    private val _gameModel: MutableLiveData<GameModel> = MutableLiveData()
-    var gameModel: LiveData<GameModel> = _gameModel
+    val gameModel: MutableLiveData<GameModel> = MutableLiveData()
 
     fun saveGameModel(model: GameModel){
-        _gameModel.postValue(model)
+        gameModel.postValue(model)
     }
 }
